@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<head>
+    <title>Карскас страницы с погодой</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var settings = {
+            "url": "https://api.openweathermap.org/data/2.5/weather?lat=55.751244&lon=37.618423&units=metric&appid=8d561491f84f9d95c453474463daf8b0",
+            "method": "GET",
+            "timeout": 0,
+        };
+
+        $.ajax(settings).done(function(response, xhr) {
+            console.log("Return Code: " + xhr.status);
+
+            $("#Temp").append(response.main.temp);
+            $("#MinTemp").append(response.main.temp_min);
+            $("#MaxTemp").append(response.main.temp_max);
+            $("#Wind").append(response.wind.speed);
+        });
+
+    </script>
+</head>
+<body>
+<h1>Страница с погодой</h1>
+
+Temp: <span id="Temp"></span> <br>
+MinTemp: <span id="MinTemp"></span> <br>
+MaxTemp: <span id="MaxTemp"></span> <br>
+Wind: <span id="Wind"></span> <br>
+</body>
+</html>
